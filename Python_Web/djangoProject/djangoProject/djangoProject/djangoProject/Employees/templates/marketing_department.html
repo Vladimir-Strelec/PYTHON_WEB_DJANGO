@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>MARKETING DEPARTMENTS</title>
+</head>
+<body>
+    <h1>MARKETING DEPARTMENT</h1>
+    <ul>
+        {% for department in departments %}
+            <li>
+                <h3>{{ department }}</h3>
+                <ul>
+                    {% for emp in department.employee_set.all %}
+                        <li>{{ emp.first_name }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    <hr>
+        {% for employee in employees %}
+            <li>{{ employee.first_name }}({{ employee.department.name }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

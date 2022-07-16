@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{% block blok_content %}
+
+        <div class="body">
+            <!--headings-->
+            <h1>Note Details</h1>
+            <!--headings-->
+
+            <!--details note box-->
+            <div class="note-details-container">
+                <h2>{{ curren_not.title }}</h2>
+                <img class="detail-img" src="{{ curren_not.image_url }}" alt="note-image" />
+                <div>
+                    <p>{{ curren_not.content }}</p>
+                </div>
+                <p>
+                    {{ curren_not.content }}
+                </p>
+                <div class="right">
+                    <a class="button edit" href="{% url 'edit_note' not_pk.pk %}">Edit</a>
+                    <a class="button delete" href="{% url 'delete note' not_pk.pk %}">Delete</a>
+                </div>
+            </div>
+            <!--end details note box-->
+        </div>
+
+{% endblock %}
+

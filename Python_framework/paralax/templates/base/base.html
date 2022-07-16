@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Music App</title>
+    <!-- Static Load -->
+    <link rel="stylesheet" href="{% static '/css/style2.css' %}"/>
+</head>
+
+<body>
+<div id="box">
+
+    <!-- Navigation Bar -->
+        <header>
+            <nav>
+                <img src="{% static '/images/images.png' %}" alt="headphones">
+                <a href="{% url 'index' %}">Home</a><ul></ul>
+                <ul>
+                    <!--Only for user with created profile-->
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_staff %}
+                            <li><a href="{% url 'create product' %}">Create product</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'catalog' %}">Catalog</a></li>
+                        {% if not request.user.is_superuser %}
+                            <li><a href="{% url 'profile details' request.user.id %}">Profile</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'logout' request.user.id %}">Logout</a></li>
+                    {% elif not request.user.is_authenticated %}
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        <li><a href="{% url 'login user' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+    <!-- End Navigation Bar -->
+
+    {% block block_content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div>
+
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+</div>
+</body>
+</html>

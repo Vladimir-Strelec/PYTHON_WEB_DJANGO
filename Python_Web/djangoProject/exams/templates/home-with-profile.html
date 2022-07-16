@@ -1,0 +1,74 @@
+{% extends 'base/base_content.html' %}
+
+{% block base_content %}
+
+<div class="body">
+    <!-- Summary -->
+    <div>
+        <h1>Summary</h1>
+        <ul class="expenses-list">
+            <!-- User Budget -->
+            <li class="blue">{{ budget }}$</li>
+            <!-- First Expense -->
+            {% for expens in expenses %}
+                <li class="red"> - {{ expens.price }}$</li>
+            {% endfor %}
+            <!-- Money Left -->
+            <li class="green">= {{ budget_left }}$ left</li>
+        </ul>
+    </div>
+    <!-- End Summary -->
+
+    <!-- Headline My Expenses -->
+    <h1>My Expenses</h1>
+    <!-- Add Expense Button -->
+    <a class="button add" href="{% url 'create expense page' %}">Add Expense</a>
+
+    <div class="expenses-container">
+
+        <!-- First Expense Container -->
+        {% for expense in expenses %}
+            <div class="expense-container">
+                <!-- Expense Title -->
+                <h2>{{ expense.title }}</h2>
+                <!-- Expense Image -->
+                <img src="{{ expense.image }}" alt="description">
+                <!-- Expense Description -->
+                <p>{{ expense.description }}</p>
+                <div class="expense-detail">
+                    <div>
+                        <!-- Expense Price -->
+                                           <p>Price: {{ expense.price|floatformat:2 }}$</p>
+                    </div>
+                    <div class="right">
+                        <!-- Edit Expense Button -->
+                        <a class="button edit" href="{% url 'edit expense page' expense.pk %}">Edit</a>
+                        <!-- Delete Expense Button -->
+                        <a class="button delete" href="{% url 'delete expense page' expense.pk %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <!-- End First Expense Container -->
+
+        <!-- Second Expense Container -->
+{#        <div class="expense-container">#}
+{#            <h2>Bed</h2>#}
+{#            <img src="https://www.pngall.com/wp-content/uploads/2/Double-Bed.png" alt="description">#}
+{#            <p>A new bed from ikea</p>#}
+{#            <div class="expense-detail">#}
+{#                <div>#}
+{#                    <p>Price: 200.00$</p>#}
+{#                </div>#}
+{#                <div class="right">#}
+{#                    <a class="button edit" href="#">Edit</a>#}
+{#                    <a class="button delete" href="#">Delete</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+        <!-- End Second Expense Container -->
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% block content_block %}
+
+<!--Details Page-->
+<section id="detailsPage">
+    <div class="wrapper">
+
+        <div class="albumCover">
+            <!-- Album Image -->
+            <img src="/static/images/Lorde.jpg" alt="Cover Image">
+        </div>
+
+        <div class="albumInfo">
+            {{ model.title }}
+            <div class="albumText">
+                    <!-- Album Info -->
+                    <h1>Name: {{ todo.title }}</h1>
+                    <h3>Artist: Lorde</h3>
+                    <h4>Genre: {{ object.category }}</h4>
+                    <h4>Price: $7.33</h4>
+                    <p>Description: {{ object.description }}</p>
+            </div>
+
+            <div class="actionBtn">
+                <!-- Album Buttons -->
+                <a href="#" class="edit">Edit</a>
+                <a href="#" class="remove">Delete</a>
+            </div>
+                                                        /       ;/
+        </div>
+    </div>
+</section>
+
+{% endblock %}

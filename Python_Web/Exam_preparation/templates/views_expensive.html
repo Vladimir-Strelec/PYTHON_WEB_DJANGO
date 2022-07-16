@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+{% block block_content %}
+    {% for exp in expensive %}
+        <div class="expenses-container">
+            <ul>
+                <img src="{{ exp.image }}" alt="{% url 'ExpenseViews' %}">
+            </ul>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

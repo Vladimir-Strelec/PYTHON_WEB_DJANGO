@@ -1,0 +1,17 @@
+{% extends 'base/base_content.html' %}
+
+{% block base_content %}
+
+<div class="body">
+    <!-- Delete Profile Form -->
+    <h1>Are you sure you want to delete your profile?</h1>
+    <form method="post" action="{% url 'delete profile page' %}">
+        {% csrf_token %}
+        {{ form }}
+        <!-- Confirm Button -->
+        <button class="button delete-lg">Confirm</button>
+    </form>
+    <!-- End Delete Profile Form -->
+</div>
+
+{% endblock %}

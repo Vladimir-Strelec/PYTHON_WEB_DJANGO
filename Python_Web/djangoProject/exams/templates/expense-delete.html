@@ -1,0 +1,19 @@
+{% extends 'base/base_content.html' %}
+{% block base_content %}
+
+<div class="body">
+    <h1>Delete Expense</h1>
+
+    <!-- Delete Expense Form -->
+    <div class="form">
+        <form method="POST" action="{% url 'delete expense page' expense.pk %}">
+            {{ form }}
+            {% csrf_token %}
+            <!-- Delete Button -->
+            <input type="submit" value="Delete">
+        </form>
+        <!-- End Delete Expense Form -->
+
+    </div>
+</div>
+{% endblock %}

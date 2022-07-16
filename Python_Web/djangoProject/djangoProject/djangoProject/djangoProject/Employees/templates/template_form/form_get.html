@@ -1,0 +1,50 @@
+{%  extends 'base/base.html' %}
+{% block content %}
+
+<h2>Bound(django) form</h2>
+
+    <form method="post" action="{% url 'create employee get' %}">
+        <h3>{{ employee_form }}</h3>
+        {% csrf_token %}
+        <button>SAVE</button>
+
+    </form>
+
+    <form method="get" action="{% url 'create employee get' %}">
+            {{ employee_form_order }}
+            {% csrf_token %}
+            <button>order by</button>
+    </form>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th scope="col">FIRST NAME</th>
+            <th scope="col">LAST NAME</th>
+            <th scope="col">AGE</th>
+            <th scope="col">EGN</th>
+            <th scope="col">EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for employee in employees %}
+        <tr>
+            <td>
+                {% if employee.image %}
+                    <img height="60" src="{{ employee.image.url }}">
+                {% else %}
+                    No image
+            {% endif %}
+            </td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.age }}</td>
+            <td>{{ employee.egn }}</td>
+            <td><a href="{% url 'edit employee' employee.pk %}">EDIT</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}

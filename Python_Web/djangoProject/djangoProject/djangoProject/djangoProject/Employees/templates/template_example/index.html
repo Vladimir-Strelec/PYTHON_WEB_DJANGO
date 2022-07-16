@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+{% load departments_tags %}
+{% load even_numbers %}
+{% load string_filters %}
+    <h1>Original : ({{status}})</h1>
+    <h1>Modify : (<i>{{status|capitalize}}</i>)</h1>
+    <h1>Modify : ({{status.capitalize}})</h1>
+    <p>{{ lorem }}</p>
+    <p>{{ lorem|truncatewords:3 }}</p>
+    <div>
+        {{ employees|join:', ' }}
+    </div>
+    <div>
+        {{ departments_all|join:"<br/>" }}
+    </div>
+    <hr>
+    <ul>
+        {% for emp in employees %}
+            <div>{{ emp.first_name }} > ({{ emp.department.name }}) in {{ emp.get_job_title_display }}</div>
+        {% endfor %}
+    </ul>
+    <hr>
+    {% for number in numbers %}
+        <div>
+            {% if number == 123 %}
+                This number == {{ number }}
+            {% elif number == 200 %}
+                this number > 123 and = {{ number }}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <hr>
+    <strong>{{ numbers|even }}</strong>
+    {% departments_list_funk %}
+
+{% endblock %}
